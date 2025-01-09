@@ -10,11 +10,15 @@ import SwiftUI
 struct PopularShowsView: View {
     @StateObject var viewModel = PopularShowsViewModel()
     var body: some View {
-        List(viewModel.shows, id: \.id) { show in
-            Text(show.name)
-        }
-        .onAppear {
-            viewModel.loadsPopularShows()
+        NavigationView {
+            List(viewModel.shows, id: \.id) { show in
+                NavigationLink(destination: DetailView(viewModel: TVShowDetailsViewModel(id: show.id))) {
+                    Text(show.name)
+                }
+            }
+            .onAppear {
+                viewModel.loadsPopularShows()
+            }
         }
     }
 }

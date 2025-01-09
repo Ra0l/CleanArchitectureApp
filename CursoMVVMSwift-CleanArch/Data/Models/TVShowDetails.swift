@@ -13,8 +13,9 @@ struct TVShowDetails: Codable {
     let genres: [Genre]
 }
 
-struct Genre: Codable {
-    let name: String 
+struct Genre: Codable, Identifiable {
+    let id: Int
+    let name: String
 }
 
 /**
