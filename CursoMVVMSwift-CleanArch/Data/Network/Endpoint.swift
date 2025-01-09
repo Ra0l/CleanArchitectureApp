@@ -7,10 +7,14 @@
 
 import Foundation
 
+// MARK: - HTTPMethod
+
 enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
 }
+
+// MARK: - Endpoint
 
 enum Endpoint {
     case popularShows
@@ -26,6 +30,9 @@ enum Endpoint {
         case .tvShowDetails(let id):
             return URL(string: "\(baseUrl)/tv/\(id)?api_key=\(apiKey)&language=es_ES")!
         }
-        
+    }
+    
+    var method: HTTPMethod {
+        return .get
     }
 }
